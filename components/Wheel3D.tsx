@@ -9,10 +9,10 @@ const ACCENT = "#5cd6e6";
 const SPOKES = 10;
 const LUGS = 5;
 
-// Metalness kept below 1 so diffuse lighting reveals the form even before
-// the environment map reflections kick in (avoids the "black metal" look).
-const SILVER = { color: "#d4d8de", metalness: 0.72, roughness: 0.28, envMapIntensity: 1.3 };
-const DARK_METAL = { color: "#23272d", metalness: 0.8, roughness: 0.4, envMapIntensity: 1 };
+// Metalness kept moderate so diffuse lighting fully reveals the form on the
+// very first frame — before the environment map bakes — avoiding a dark flash.
+const SILVER = { color: "#dadee4", metalness: 0.5, roughness: 0.34, envMapIntensity: 1.5 };
+const DARK_METAL = { color: "#262a30", metalness: 0.6, roughness: 0.45, envMapIntensity: 1.1 };
 
 function WheelModel() {
   const tilt = useRef<THREE.Group>(null);
@@ -58,7 +58,7 @@ function WheelModel() {
         {/* Polished outer lip */}
         <mesh position={[0, 0, 0.05]}>
           <torusGeometry args={[1.62, 0.1, 24, 160]} />
-          <meshStandardMaterial color="#e2e6ea" metalness={0.7} roughness={0.18} envMapIntensity={1.5} />
+          <meshStandardMaterial color="#e6eaee" metalness={0.55} roughness={0.22} envMapIntensity={1.6} />
         </mesh>
 
         {/* Dish back plate */}
@@ -120,11 +120,11 @@ export function Wheel3D() {
       style={{ background: "transparent" }}
     >
       {/* Lighting rig — reveals metal form independent of the env map */}
-      <ambientLight intensity={0.7} />
-      <hemisphereLight color="#cdeaff" groundColor="#0d1014" intensity={1.3} />
-      <directionalLight position={[5, 8, 6]} intensity={2.6} />
-      <directionalLight position={[-6, 2, 4]} intensity={1.3} color="#bfefff" />
-      <pointLight position={[0, -4, 3]} intensity={20} color={ACCENT} distance={14} />
+      <ambientLight intensity={0.95} />
+      <hemisphereLight color="#dcefff" groundColor="#0d1014" intensity={1.6} />
+      <directionalLight position={[5, 8, 6]} intensity={3.2} />
+      <directionalLight position={[-6, 2, 4]} intensity={1.5} color="#bfefff" />
+      <pointLight position={[0, -4, 3]} intensity={22} color={ACCENT} distance={14} />
 
       <WheelModel />
 
