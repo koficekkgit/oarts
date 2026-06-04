@@ -14,6 +14,17 @@ const LUGS = 5;
 const SILVER = { color: "#dadee4", metalness: 0.5, roughness: 0.34, envMapIntensity: 1.5 };
 const DARK_METAL = { color: "#262a30", metalness: 0.6, roughness: 0.45, envMapIntensity: 1.1 };
 
+function FirstFrame({ onReady }: { onReady?: () => void }) {
+  const fired = useRef(false);
+  useFrame(() => {
+    if (!fired.current) {
+      fired.current = true;
+      onReady?.();
+    }
+  });
+  return null;
+}
+
 function WheelModel() {
   const tilt = useRef<THREE.Group>(null);
   const spin = useRef<THREE.Group>(null);
@@ -111,7 +122,7 @@ function WheelModel() {
   );
 }
 
-export function Wheel3D() {
+export function Wheel3D({ onReady }: { onReady?: () => void }) {
   return (
     <Canvas
       dpr={[1, 1.8]}
@@ -119,6 +130,7 @@ export function Wheel3D() {
       camera={{ position: [0, 0, 7.2], fov: 38 }}
       style={{ background: "transparent" }}
     >
+      <FirstFrame onReady={onReady} />
       {/* Lighting rig — reveals metal form independent of the env map */}
       <ambientLight intensity={0.95} />
       <hemisphereLight color="#dcefff" groundColor="#0d1014" intensity={1.6} />

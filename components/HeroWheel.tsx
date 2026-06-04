@@ -1,24 +1,16 @@
 "use client";
 
 import dynamic from "next/dynamic";
+import { useState } from "react";
 
 const Wheel3D = dynamic(() => import("./Wheel3D").then((m) => m.Wheel3D), {
   ssr: false,
-  loading: () => <HeroFallback />,
+  loading: () => null,
 });
 
-function HeroFallback() {
-  return (
-    <div className="flex h-full w-full items-center justify-center">
-      <div
-        className="h-40 w-40 rounded-full border-2 border-white/10 border-t-accent"
-        style={{ animation: "spinSlow 1.1s linear infinite" }}
-      />
-    </div>
-  );
-}
-
 export function HeroWheel() {
+  const [ready, setReady] = useState(false);
+
   return (
     <div className="relative h-full w-full">
       {/* glow behind the wheel */}
@@ -32,8 +24,26 @@ export function HeroWheel() {
           }}
         />
       </div>
-      <div className="relative z-10 h-full w-full">
-        <Wheel3D />
+
+      {/* 3D canvas */}
+      <div
+        className={`relative z-10 h-full w-full transition-opacity duration-700 ${
+          ready ? "opacity-100" : "opacity-0"
+        }`}
+      >
+        <Wheel3D onReady={() => setReady(true)} />
+      </div>
+
+      {/* loading state — stays until the first 3D frame is painted */}
+      <div
+        className={`pointer-events-none absolute inset-0 z-20 flex items-center justify-center transition-opacity duration-500 ${
+          ready ? "opacity-0" : "opacity-100"
+        }`}
+      >
+        <div
+          className="h-28 w-28 rounded-full border-2 border-white/10 border-t-accent"
+          style={{ animation: "spinSlow 1.1s linear infinite" }}
+        />
       </div>
     </div>
   );
