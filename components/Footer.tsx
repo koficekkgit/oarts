@@ -20,7 +20,7 @@ export function Footer() {
         <div>
           <Logo />
           <p className="mt-4 max-w-xs text-sm leading-relaxed text-muted">
-            {site.tagline}. {site.description} Sídlíme v {site.city}, posíláme po celé ČR ({site.shipping}).
+            {site.tagline}. {site.description} Sídlíme v Ostravě, posíláme po celé ČR ({site.shipping}).
           </p>
           <a
             href={site.instagram}
@@ -89,7 +89,7 @@ export function Footer() {
       <div className="border-t border-line">
         <div className="container-x flex flex-col items-center justify-between gap-2 py-6 text-xs text-muted sm:flex-row">
           <p>© {new Date().getFullYear()} {site.name}. Všechna práva vyhrazena.</p>
-          <p>Demo verze — obsah je placeholder.</p>
+          <p>{site.city}, Česká republika</p>
         </div>
       </div>
     </footer>

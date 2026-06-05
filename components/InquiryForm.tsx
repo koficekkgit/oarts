@@ -28,7 +28,7 @@ export function InquiryForm({ subject, compact = false }: Props) {
         </div>
         <h3 className="text-lg font-semibold text-fg">Poptávka odeslána</h3>
         <p className="max-w-sm text-sm text-muted">
-          Děkujeme! Ozveme se co nejdříve. (Demo — formulář zatím neodesílá reálná data.)
+          Děkujeme! Ozveme se co nejdříve s nabídkou a termínem.
         </p>
         <button
           type="button"

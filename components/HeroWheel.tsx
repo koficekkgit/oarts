@@ -13,14 +13,14 @@ export function HeroWheel() {
 
   return (
     <div className="relative h-full w-full">
-      {/* glow behind the wheel */}
+      {/* soft overhead spotlight grounding the wheel */}
       <div className="pointer-events-none absolute inset-0 z-0 flex items-center justify-center">
         <div
-          className="h-[70%] w-[70%] rounded-full opacity-70"
+          className="h-[78%] w-[78%] rounded-full opacity-80"
           style={{
             background:
-              "radial-gradient(circle, rgba(92,214,230,0.28), rgba(92,214,230,0.05) 45%, transparent 70%)",
-            filter: "blur(30px)",
+              "radial-gradient(circle at 50% 42%, rgba(214,208,196,0.12), rgba(184,184,184,0.05) 42%, transparent 70%)",
+            filter: "blur(26px)",
           }}
         />
       </div>
@@ -41,8 +41,8 @@ export function HeroWheel() {
         }`}
       >
         <div
-          className="h-28 w-28 rounded-full border-2 border-white/10 border-t-accent"
-          style={{ animation: "spinSlow 1.1s linear infinite" }}
+          className="h-24 w-24 rounded-full border border-white/10"
+          style={{ borderTopColor: "#d6d0c4", animation: "spinSlow 1.2s linear infinite" }}
         />
       </div>
     </div>

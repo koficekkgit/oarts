@@ -1,14 +1,18 @@
 @import "tailwindcss";
 
 @theme {
-  --color-bg: #0a0b0d;
-  --color-bg-2: #0e1014;
-  --color-surface: #111418;
-  --color-line: rgba(255, 255, 255, 0.08);
-  --color-fg: #e9ebef;
-  --color-muted: #9aa1ab;
-  --color-accent: #5cd6e6;
-  --color-accent-2: #28c2d6;
+  /* Brand palette — deep black, anthracite, off-white, metallic + champagne silver */
+  --color-bg: #0a0a0a;
+  --color-bg-2: #0d0c0b;
+  --color-surface: #161412;
+  --color-surface-2: #1d1b18;
+  --color-line: #2b2b2b;
+  --color-line-strong: #3a3936;
+  --color-fg: #f5f5f5;
+  --color-muted: #8c8a86;
+  --color-silver: #b8b8b8;
+  --color-champagne: #d6d0c4;
+  --color-accent: #d6d0c4;
 
   --font-sans: var(--font-geist-sans), ui-sans-serif, system-ui, sans-serif;
   --font-mono: var(--font-geist-mono), ui-monospace, monospace;
@@ -31,87 +35,69 @@ body {
 }
 
 ::selection {
-  background: color-mix(in oklab, var(--color-accent) 32%, transparent);
+  background: rgba(214, 208, 196, 0.22);
   color: #fff;
 }
 
 ::-webkit-scrollbar {
-  width: 10px;
-  height: 10px;
+  width: 9px;
+  height: 9px;
 }
 ::-webkit-scrollbar-track {
-  background: #08090b;
+  background: #0a0a0a;
 }
 ::-webkit-scrollbar-thumb {
-  background: #20242b;
+  background: #2b2b2b;
   border-radius: 999px;
-  border: 2px solid #08090b;
 }
 ::-webkit-scrollbar-thumb:hover {
-  background: #2c313a;
+  background: #3a3936;
 }
 
 /* ---------- layout helpers ---------- */
 .container-x {
   width: 100%;
-  max-width: 80rem;
+  max-width: 78rem;
   margin-inline: auto;
-  padding-inline: 1.25rem;
+  padding-inline: 1.5rem;
 }
 @media (min-width: 768px) {
   .container-x {
-    padding-inline: 2rem;
+    padding-inline: 2.5rem;
   }
 }
 
-.eyebrow {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.6rem;
-  font-size: 0.72rem;
-  font-weight: 600;
-  letter-spacing: 0.2em;
+/* Small caps label — single hairline, not the gradient-eyebrow cliché */
+.label {
+  display: inline-block;
+  font-size: 0.7rem;
+  font-weight: 500;
+  letter-spacing: 0.28em;
   text-transform: uppercase;
-  color: var(--color-accent);
-}
-.eyebrow::before {
-  content: "";
-  width: 1.6rem;
-  height: 1px;
-  background: linear-gradient(90deg, transparent, var(--color-accent));
-}
-.eyebrow.is-centered::after {
-  content: "";
-  width: 1.6rem;
-  height: 1px;
-  background: linear-gradient(90deg, var(--color-accent), transparent);
+  color: var(--color-champagne);
 }
 
-.text-gradient {
-  background: linear-gradient(180deg, #ffffff 0%, #9fa7b2 100%);
+.rule {
+  height: 1px;
+  width: 100%;
+  background: var(--color-line);
+}
+
+/* Metallic sheen for the wordmark / select headings — brushed silver, applied sparingly */
+.brushed {
+  background: linear-gradient(
+    100deg,
+    #8f8d88 0%,
+    #f3f1ec 22%,
+    #cfcabd 40%,
+    #ffffff 52%,
+    #b9b6ae 66%,
+    #efece4 84%,
+    #9b9892 100%
+  );
   -webkit-background-clip: text;
   background-clip: text;
   color: transparent;
-}
-
-.glass {
-  background: rgba(255, 255, 255, 0.025);
-  backdrop-filter: blur(14px) saturate(140%);
-  -webkit-backdrop-filter: blur(14px) saturate(140%);
-  border: 1px solid var(--color-line);
-}
-
-.card {
-  position: relative;
-  border-radius: 1.1rem;
-  border: 1px solid var(--color-line);
-  background: linear-gradient(180deg, rgba(255, 255, 255, 0.035), rgba(255, 255, 255, 0.008));
-  transition: border-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
-}
-.card:hover {
-  border-color: color-mix(in oklab, var(--color-accent) 45%, transparent);
-  transform: translateY(-3px);
-  box-shadow: 0 24px 60px -32px rgba(92, 214, 230, 0.45);
 }
 
 .btn {
@@ -120,59 +106,70 @@ body {
   justify-content: center;
   gap: 0.5rem;
   height: 3rem;
-  padding-inline: 1.5rem;
-  border-radius: 999px;
+  padding-inline: 1.6rem;
   font-weight: 600;
   font-size: 0.95rem;
   line-height: 1;
-  transition: all 0.25s ease;
+  letter-spacing: 0.01em;
+  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
   cursor: pointer;
   white-space: nowrap;
+  border-radius: 2px;
 }
 .btn-primary {
-  background: var(--color-accent);
-  color: #04141a;
-  box-shadow: 0 10px 34px -12px rgba(92, 214, 230, 0.7);
+  background: linear-gradient(180deg, #e6e0d4 0%, #cdc6b8 100%);
+  color: #15120c;
+  border: 1px solid #e9e4d9;
 }
 .btn-primary:hover {
-  background: #7ee5f2;
-  box-shadow: 0 16px 44px -12px rgba(92, 214, 230, 0.9);
+  background: linear-gradient(180deg, #f1ece1 0%, #d8d1c3 100%);
   transform: translateY(-1px);
 }
 .btn-ghost {
-  border: 1px solid var(--color-line);
+  border: 1px solid var(--color-line-strong);
   color: var(--color-fg);
-  background: rgba(255, 255, 255, 0.02);
+  background: transparent;
 }
 .btn-ghost:hover {
-  border-color: rgba(255, 255, 255, 0.25);
-  background: rgba(255, 255, 255, 0.05);
+  border-color: var(--color-silver);
+  background: rgba(245, 245, 245, 0.04);
 }
 
 .chip {
   display: inline-flex;
   align-items: center;
-  gap: 0.4rem;
-  font-size: 0.72rem;
-  font-weight: 600;
-  letter-spacing: 0.02em;
-  padding: 0.3rem 0.6rem;
-  border-radius: 999px;
+  gap: 0.45rem;
+  font-size: 0.7rem;
+  font-weight: 500;
+  letter-spacing: 0.06em;
+  padding: 0.32rem 0.6rem;
+  border-radius: 2px;
   border: 1px solid var(--color-line);
-  background: rgba(8, 9, 11, 0.7);
-  backdrop-filter: blur(6px);
+  background: rgba(10, 10, 10, 0.72);
+  color: var(--color-fg);
+}
+
+.panel {
+  border: 1px solid var(--color-line);
+  background: var(--color-surface);
+  border-radius: 3px;
+  transition: border-color 0.4s cubic-bezier(0.16, 1, 0.3, 1), transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.panel-hover:hover {
+  border-color: var(--color-line-strong);
+  transform: translateY(-2px);
 }
 
 .input {
   width: 100%;
   height: 3rem;
-  border-radius: 0.75rem;
+  border-radius: 2px;
   border: 1px solid var(--color-line);
-  background: rgba(255, 255, 255, 0.02);
+  background: var(--color-bg-2);
   padding-inline: 0.9rem;
   color: var(--color-fg);
   font-size: 0.95rem;
-  transition: border-color 0.2s ease, background 0.2s ease;
+  transition: border-color 0.25s ease, background 0.25s ease;
 }
 textarea.input {
   height: auto;
@@ -180,54 +177,39 @@ textarea.input {
   resize: vertical;
 }
 .input::placeholder {
-  color: #5b626d;
+  color: #5e5b56;
 }
 .input:focus {
   outline: none;
-  border-color: color-mix(in oklab, var(--color-accent) 60%, transparent);
-  background: rgba(92, 214, 230, 0.04);
+  border-color: var(--color-silver);
+  background: #121110;
 }
 
-.grid-bg {
-  background-image: linear-gradient(to right, rgba(255, 255, 255, 0.04) 1px, transparent 1px),
-    linear-gradient(to bottom, rgba(255, 255, 255, 0.04) 1px, transparent 1px);
-  background-size: 58px 58px;
-  -webkit-mask-image: radial-gradient(ellipse 75% 65% at 50% 30%, #000 35%, transparent 100%);
-  mask-image: radial-gradient(ellipse 75% 65% at 50% 30%, #000 35%, transparent 100%);
+.link-quiet {
+  color: var(--color-silver);
+  transition: color 0.25s ease;
+}
+.link-quiet:hover {
+  color: var(--color-champagne);
 }
 
-.link-underline {
-  position: relative;
-}
-.link-underline::after {
-  content: "";
-  position: absolute;
-  left: 0;
-  bottom: -3px;
-  height: 1px;
-  width: 100%;
-  background: currentColor;
-  transform: scaleX(0);
-  transform-origin: right;
-  transition: transform 0.3s ease;
-}
-.link-underline:hover::after {
-  transform: scaleX(1);
-  transform-origin: left;
+/* Hairline-ruled list — replaces icon-card grids */
+.ruled > * + * {
+  border-top: 1px solid var(--color-line);
 }
 
-@keyframes fadeUp {
+@keyframes riseIn {
   from {
     opacity: 0;
-    transform: translateY(18px);
+    transform: translateY(14px);
   }
   to {
     opacity: 1;
     transform: none;
   }
 }
-.fade-up {
-  animation: fadeUp 0.8s cubic-bezier(0.2, 0.7, 0.2, 1) both;
+.rise {
+  animation: riseIn 0.9s cubic-bezier(0.16, 1, 0.3, 1) both;
 }
 
 @keyframes spinSlow {
@@ -240,7 +222,7 @@ textarea.input {
   html {
     scroll-behavior: auto;
   }
-  .fade-up {
+  .rise {
     animation: none;
   }
 }

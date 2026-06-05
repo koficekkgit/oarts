@@ -1,11 +1,10 @@
 import type { Tone } from "@/lib/wheels";
 
 const TONES: Record<Tone, { hi: string; mid: string; lo: string }> = {
-  silver: { hi: "#eef2f7", mid: "#aab2bd", lo: "#5c636d" },
-  graphite: { hi: "#cfd5dd", mid: "#737a84", lo: "#2e333a" },
-  gold: { hi: "#f4e3a1", mid: "#cda63f", lo: "#6f581c" },
-  bronze: { hi: "#e6c19a", mid: "#a9743f", lo: "#583620" },
-  black: { hi: "#7b818a", mid: "#3a3f45", lo: "#15171a" },
+  silver: { hi: "#f1f0ec", mid: "#b6b3ab", lo: "#5d5b55" },
+  graphite: { hi: "#cfcdc7", mid: "#76746e", lo: "#2c2b28" },
+  champagne: { hi: "#f0e9da", mid: "#cabfa6", lo: "#6b6253" },
+  black: { hi: "#7a7872", mid: "#3a3935", lo: "#161512" },
 };
 
 type Props = {

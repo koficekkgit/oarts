@@ -25,7 +25,7 @@ export function Header() {
   return (
     <header
       className={`sticky top-0 z-50 transition-colors duration-300 ${
-        scrolled ? "glass border-b border-line" : "border-b border-transparent"
+        scrolled ? "border-b border-line bg-bg/95" : "border-b border-transparent"
       }`}
     >
       <div className="container-x flex h-16 items-center justify-between">

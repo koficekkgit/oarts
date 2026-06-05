@@ -1,4 +1,4 @@
-export type Tone = "silver" | "graphite" | "gold" | "bronze" | "black";
+export type Tone = "silver" | "graphite" | "champagne" | "black";
 
 export type Wheel = {
   slug: string;
@@ -25,6 +25,9 @@ export const LOREM =
 export const LOREM_SHORT =
   "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor.";
 
+const SILVER = "#c9c5bb";
+const CHAMPAGNE = "#d6d0c4";
+
 export const wheels: Wheel[] = [
   {
     slug: "bbs-ci-r",
@@ -38,7 +41,7 @@ export const wheels: Wheel[] = [
     inStock: false,
     badge: "Na míru",
     spokes: 5,
-    accent: "#5cd6e6",
+    accent: SILVER,
     tone: "graphite",
     blurb: LOREM_SHORT,
   },
@@ -54,7 +57,7 @@ export const wheels: Wheel[] = [
     inStock: true,
     badge: "Forged",
     spokes: 10,
-    accent: "#9fe7ff",
+    accent: CHAMPAGNE,
     tone: "silver",
     blurb: LOREM_SHORT,
   },
@@ -70,7 +73,7 @@ export const wheels: Wheel[] = [
     inStock: false,
     badge: "Motorsport",
     spokes: 14,
-    accent: "#5cd6e6",
+    accent: SILVER,
     tone: "black",
     blurb: LOREM_SHORT,
   },
@@ -78,7 +81,7 @@ export const wheels: Wheel[] = [
     slug: "bbs-lm",
     brand: "BBS",
     model: "LM",
-    finish: "Gold / Polished Lip",
+    finish: "Champagne / Polished Lip",
     diameters: '18" – 20"',
     sizes: ["8.5x18", "9.5x18", "9x19", "10.5x19"],
     boltPatterns: ["5x112", "5x114.3", "5x120"],
@@ -86,8 +89,8 @@ export const wheels: Wheel[] = [
     inStock: true,
     badge: "Bestseller",
     spokes: 18,
-    accent: "#f4e3a1",
-    tone: "gold",
+    accent: CHAMPAGNE,
+    tone: "champagne",
     blurb: LOREM_SHORT,
   },
   {
@@ -101,7 +104,7 @@ export const wheels: Wheel[] = [
     price: 78000,
     inStock: true,
     spokes: 5,
-    accent: "#7ee5f2",
+    accent: SILVER,
     tone: "graphite",
     blurb: LOREM_SHORT,
   },
@@ -109,7 +112,7 @@ export const wheels: Wheel[] = [
     slug: "vossen-s17-01",
     brand: "Vossen",
     model: "S17-01",
-    finish: "Bronze Satin",
+    finish: "Satin Graphite",
     diameters: '21" – 22"',
     sizes: ["9.5x21", "11x21", "10x22", "11.5x22"],
     boltPatterns: ["5x112", "5x120"],
@@ -117,8 +120,8 @@ export const wheels: Wheel[] = [
     inStock: false,
     badge: "Na míru",
     spokes: 10,
-    accent: "#e6c19a",
-    tone: "bronze",
+    accent: SILVER,
+    tone: "graphite",
     blurb: LOREM_SHORT,
   },
   {
@@ -132,7 +135,7 @@ export const wheels: Wheel[] = [
     price: 64000,
     inStock: true,
     spokes: 5,
-    accent: "#bfe9f5",
+    accent: SILVER,
     tone: "silver",
     blurb: LOREM_SHORT,
   },
@@ -147,7 +150,7 @@ export const wheels: Wheel[] = [
     price: 58000,
     inStock: true,
     spokes: 6,
-    accent: "#5cd6e6",
+    accent: SILVER,
     tone: "black",
     blurb: LOREM_SHORT,
   },
@@ -155,7 +158,7 @@ export const wheels: Wheel[] = [
     slug: "japan-racing-jr",
     brand: "Japan Racing",
     model: "JR-28",
-    finish: "Hyper Bronze",
+    finish: "Champagne Gold",
     diameters: '17" – 19"',
     sizes: ["8x17", "8.5x18", "9.5x18", "8.5x19"],
     boltPatterns: ["5x112", "5x100", "4x108"],
@@ -163,8 +166,8 @@ export const wheels: Wheel[] = [
     inStock: true,
     badge: "Skladová akce",
     spokes: 5,
-    accent: "#e6c19a",
-    tone: "bronze",
+    accent: CHAMPAGNE,
+    tone: "champagne",
     blurb: LOREM_SHORT,
   },
   {
@@ -178,7 +181,7 @@ export const wheels: Wheel[] = [
     price: null,
     inStock: false,
     spokes: 10,
-    accent: "#9fe7ff",
+    accent: SILVER,
     tone: "graphite",
     blurb: LOREM_SHORT,
   },

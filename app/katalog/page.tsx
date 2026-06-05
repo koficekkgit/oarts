@@ -10,11 +10,11 @@ export default function KatalogPage() {
   return (
     <div className="container-x py-14 md:py-20">
       <div className="max-w-2xl">
-        <span className="eyebrow">Katalog</span>
-        <h1 className="mt-4 text-4xl font-semibold tracking-tight sm:text-5xl">Kola</h1>
-        <p className="mt-4 text-muted">
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Skladové kusy mají uvedenou cenu,
-          kola na míru zpracujeme na poptávku.
+        <span className="label">Katalog</span>
+        <h1 className="mt-5 text-4xl font-semibold tracking-tight sm:text-5xl">Kola</h1>
+        <p className="mt-5 text-muted">
+          Kované ráfky od BBS, Vossen, OZ Racing a dalších. Skladové kusy mají uvedenou cenu, kola na
+          zakázku zpracujeme na poptávku.
         </p>
       </div>
 

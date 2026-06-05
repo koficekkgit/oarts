@@ -125,7 +125,7 @@ export default async function WheelDetail({
       {/* Inquiry */}
       <div id="poptavka" className="mt-20 scroll-mt-24">
         <div className="mx-auto max-w-3xl text-center">
-          <span className="eyebrow is-centered">Poptávka</span>
+          <span className="label">Poptávka</span>
           <h2 className="mt-4 text-3xl font-semibold tracking-tight">
             Mám zájem o {w.brand} {w.model}
           </h2>
@@ -151,7 +151,7 @@ export default async function WheelDetail({
             <Link
               key={r.slug}
               href={`/kolo/${r.slug}`}
-              className="card group flex items-center gap-4 p-4"
+              className="panel panel-hover group flex items-center gap-4 p-4"
             >
               <WheelGraphic
                 uid={`rel-${r.slug}`}
