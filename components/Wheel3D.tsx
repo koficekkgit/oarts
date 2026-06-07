@@ -8,9 +8,7 @@ import * as THREE from "three";
 const CHAMPAGNE = "#d6d0c4";
 
 // Drop a real wheel model at public/wheel.glb and it loads automatically.
-// Tweak these two after first preview if the model faces the wrong way.
 const MODEL_URL = "/wheel.glb";
-const MODEL_ROTATION: [number, number, number] = [Math.PI / 2, 0, 0]; // assume axle along Y
 const MODEL_FIT = 3.4; // target diameter in scene units
 
 // ---- procedural fallback (BBS-style mesh) ----
@@ -67,25 +65,32 @@ function SpinningRig({ children }: { children: ReactNode }) {
 
 function GLBWheel() {
   const { scene } = useGLTF(MODEL_URL);
-  const model = useMemo(() => {
+  const { model, rotation } = useMemo(() => {
     const clone = scene.clone(true);
     const box = new THREE.Box3().setFromObject(clone);
     const size = new THREE.Vector3();
     const center = new THREE.Vector3();
     box.getSize(size);
     box.getCenter(center);
-    clone.position.sub(center);
     const maxDim = Math.max(size.x, size.y, size.z) || 1;
-    clone.scale.setScalar(MODEL_FIT / maxDim);
+    const s = MODEL_FIT / maxDim;
+    // Scale first, then recenter using the *scaled* centre so it stays in frame.
+    clone.scale.setScalar(s);
+    clone.position.set(-center.x * s, -center.y * s, -center.z * s);
     clone.traverse((o) => {
       o.castShadow = true;
       o.receiveShadow = true;
     });
-    return clone;
+    // Auto-orient: a wheel is thin along its axle. Point that axle at the camera (+Z).
+    const min = Math.min(size.x, size.y, size.z);
+    let rot: [number, number, number] = [0, 0, 0];
+    if (min === size.x) rot = [0, Math.PI / 2, 0];
+    else if (min === size.y) rot = [Math.PI / 2, 0, 0];
+    return { model: clone, rotation: rot };
   }, [scene]);
 
   return (
-    <group rotation={MODEL_ROTATION}>
+    <group rotation={rotation}>
       <primitive object={model} />
     </group>
   );
